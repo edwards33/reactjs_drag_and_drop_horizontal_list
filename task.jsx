@@ -3,15 +3,27 @@ import styled from 'styled-components';
 import { Draggable } from 'react-beautiful-dnd';
 
 const MARGIN_PADDING = 10;
-const BORDER = 1;
-const RADIUS = 2;
+const BORDER = 3;
+const RADIUS = 50;
+const WIDTH_HEIGHT = 40;
 
 const Container = styled.div`
-  margin-bottom: ${MARGIN_PADDING}px;
+  margin-right: ${MARGIN_PADDING}px;
   border: ${BORDER}px solid lightgrey;
-  border-radius: ${RADIUS}px;
+  border-radius: ${RADIUS}%;
   padding: ${MARGIN_PADDING}px;
   background-color: green;
+  width: ${WIDTH_HEIGHT}px;
+  height: ${WIDTH_HEIGHT}px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:focus {
+    outline: none;
+    border-color: blue;
+  }
 `;
 
 export default class Task extends React.Component {
@@ -24,7 +36,7 @@ export default class Task extends React.Component {
             {...provided.dragHandleProps}
             ref={provided.innerRef}
           >
-            {this.props.task.content}
+            {this.props.task.content.substring(0, 4)}
           </Container>
         )}
       </Draggable>

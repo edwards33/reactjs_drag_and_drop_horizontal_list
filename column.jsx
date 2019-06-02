@@ -17,6 +17,8 @@ const Title = styled.h3`
 `;
 const TaskList = styled.div`
   padding: ${MARGIN_PADDING}px;
+
+  display: flex;
 `;
 
 export default class Column extends React.Component {
@@ -24,7 +26,10 @@ export default class Column extends React.Component {
     return(
       <Container>
         <Title>{this.props.column.title}</Title>
-        <Droppable droppableId={this.props.column.id}>
+        <Droppable 
+          droppableId={this.props.column.id}
+          direction="horizontal"
+        >
           {provided =>(
             <TaskList
               ref={provided.innerRef}
